@@ -1,26 +1,21 @@
 ============================================================
   FileGuard Integrity Report
 ============================================================
-  Generated: 2026-06-18 19:21:03
+  Generated: 2026-06-18 19:26:46
 
 ------------------------------------------------------------
   Summary
 ------------------------------------------------------------
   Total Files Scanned:    3
-  Unchanged Files:        2
-  Modified Files:         1
+  Unchanged Files:        3
+  Modified Files:         0
   New Files:              0
   Deleted Files:          0
-  Severity:               Medium
-
-  Modified Files:
-    - sample_config.txt
+  Severity:               None
 
 ------------------------------------------------------------
   Recommended Defensive Actions
 ------------------------------------------------------------
-  * Review the modified files for unauthorized changes
-  * Compare modified files with known backups
   * Continue monitoring sensitive directories
   * Maintain secure backups of critical files
   * Investigate unexpected file system changes
