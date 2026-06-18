@@ -80,14 +80,90 @@ These are used for testing the integrity monitoring workflow.
 
 ---
 
-## Screenshots
+## Project Evidence & Screenshots
 
-| Screenshot | Description |
-|---|---|
-| ![Baseline Creation](screenshots/baseline-creation.png) | Running `python main.py --baseline` |
-| ![Integrity Check](screenshots/integrity-check.png) | Running `python main.py --check` |
-| ![Generated Report](screenshots/generated-report.png) | Text report in `reports/integrity_report.txt` |
-| ![JSON Report](screenshots/json-report.png) | JSON report in `reports/integrity_report.json` |
+This section shows how FileGuard works step by step — from creating a trusted hash baseline to detecting file changes and generating reports.
+
+---
+
+### 1. Baseline Creation
+
+![Baseline Creation](screenshots/baseline-creation.png)
+
+**What this shows:**
+This screenshot shows the first stage of FileGuard, where the tool scans the `monitored_files/` folder and creates a trusted baseline of SHA-256 hashes.
+
+**Why it matters in cybersecurity:**
+A baseline represents the original trusted state of files. In file integrity monitoring, this baseline is later used to detect whether a file has been modified, deleted, or newly added.
+
+**Learning demonstrated:**
+
+* SHA-256 hashing
+* File fingerprinting
+* Baseline creation
+* Trusted file state recording
+* Data integrity verification
+
+---
+
+### 2. Integrity Check
+
+![Integrity Check](screenshots/integrity-check.png)
+
+**What this shows:**
+This screenshot shows FileGuard running an integrity check. The tool compares the current files with the saved baseline and detects changes such as modified, new, or deleted files.
+
+**Why it matters in cybersecurity:**
+Unexpected file changes can indicate accidental damage, unauthorized modification, misconfiguration, or possible tampering. File integrity monitoring helps defenders detect these changes early.
+
+**Learning demonstrated:**
+
+* Baseline comparison
+* Tamper detection
+* Modified file detection
+* New file detection
+* Deleted file detection
+* Severity scoring
+
+---
+
+### 3. Generated Text Report
+
+![Generated Report](screenshots/generated-report.png)
+
+**What this shows:**
+This screenshot shows the generated `integrity_report.txt` file. The report summarizes the scan result in a readable incident-style format.
+
+**Why it matters in cybersecurity:**
+Detection alone is not enough. Security findings must be documented clearly so they can be reviewed, investigated, and acted on. This report format connects the tool with incident response thinking.
+
+**Learning demonstrated:**
+
+* Incident-style reporting
+* Security summary writing
+* Recommended defensive actions
+* Evidence-based investigation
+* Clear technical documentation
+
+---
+
+### 4. JSON Report
+
+![JSON Report](screenshots/json-report.png)
+
+**What this shows:**
+This screenshot shows the generated `integrity_report.json` file. The JSON report stores the scan result in a structured format.
+
+**Why it matters in cybersecurity:**
+Structured output can be used by dashboards, automation tools, monitoring systems, or future SIEM-style workflows. This makes the tool more useful beyond simple terminal output.
+
+**Learning demonstrated:**
+
+* Structured security reporting
+* JSON-based output
+* Automation-ready data
+* Monitoring workflow thinking
+* Defensive tool design
 
 ---
 
@@ -134,14 +210,13 @@ FileGuard/
 
 ---
 
-## What I Learned
+## Cybersecurity Learning Summary
 
-- How hashes verify file integrity and detect tampering
-- Why file changes matter in cybersecurity investigations
-- How tamper detection tools like Tripwire and OSSEC work
-- Why baselines are critical for establishing known-good states
-- How defenders monitor sensitive files for unauthorized changes
-- Basics of digital forensics and incident response workflows
+FileGuard helped me understand that cybersecurity is not only about protecting login pages or finding vulnerabilities. It is also about maintaining trust in files, configurations, and system data.
+
+If an important file is changed without authorization, defenders need a way to detect the change, compare it with a trusted baseline, and generate evidence for investigation.
+
+Through this project, I learned how hashing, baseline comparison, change detection, and reporting can work together in a simple defensive security workflow.
 
 ---
 

@@ -32,6 +32,98 @@ incident response, and this project taught me how baseline comparisons work.
 - Severity-based risk classification
 - Multi-format report generation (text + JSON)
 
+## Project Evidence & Screenshots
+
+### 1. Baseline Creation
+
+![Baseline Creation](../screenshots/baseline-creation.png)
+
+**What this shows:**
+This screenshot shows the first stage of FileGuard, where the tool scans
+the `monitored_files/` folder and creates a trusted baseline of SHA-256
+hashes.
+
+**Why it matters in cybersecurity:**
+A baseline represents the original trusted state of files. In file integrity
+monitoring, this baseline is later used to detect whether a file has been
+modified, deleted, or newly added.
+
+**Learning demonstrated:**
+SHA-256 hashing, file fingerprinting, baseline creation, trusted file state
+recording, data integrity verification.
+
+---
+
+### 2. Integrity Check
+
+![Integrity Check](../screenshots/integrity-check.png)
+
+**What this shows:**
+This screenshot shows FileGuard running an integrity check. The tool
+compares the current files with the saved baseline and detects changes
+such as modified, new, or deleted files.
+
+**Why it matters in cybersecurity:**
+Unexpected file changes can indicate accidental damage, unauthorized
+modification, misconfiguration, or possible tampering. File integrity
+monitoring helps defenders detect these changes early.
+
+**Learning demonstrated:**
+Baseline comparison, tamper detection, modified/new/deleted file detection,
+severity scoring.
+
+---
+
+### 3. Generated Text Report
+
+![Generated Report](../screenshots/generated-report.png)
+
+**What this shows:**
+This screenshot shows the generated `integrity_report.txt` file. The report
+summarizes the scan result in a readable incident-style format.
+
+**Why it matters in cybersecurity:**
+Detection alone is not enough. Security findings must be documented clearly
+so they can be reviewed, investigated, and acted on.
+
+**Learning demonstrated:**
+Incident-style reporting, security summary writing, recommended defensive
+actions, evidence-based investigation, clear technical documentation.
+
+---
+
+### 4. JSON Report
+
+![JSON Report](../screenshots/json-report.png)
+
+**What this shows:**
+This screenshot shows the generated `integrity_report.json` file. The JSON
+report stores the scan result in a structured format.
+
+**Why it matters in cybersecurity:**
+Structured output can be used by dashboards, automation tools, monitoring
+systems, or future SIEM-style workflows.
+
+**Learning demonstrated:**
+Structured security reporting, JSON-based output, automation-ready data,
+monitoring workflow thinking, defensive tool design.
+
+---
+
+## Cybersecurity Learning Summary
+
+FileGuard helped me understand that cybersecurity is not only about
+protecting login pages or finding vulnerabilities. It is also about
+maintaining trust in files, configurations, and system data.
+
+If an important file is changed without authorization, defenders need a way
+to detect the change, compare it with a trusted baseline, and generate
+evidence for investigation.
+
+Through this project, I learned how hashing, baseline comparison, change
+detection, and reporting can work together in a simple defensive security
+workflow.
+
 ## Portfolio Statement
 
 > This project helped me understand that cybersecurity is also about trust
@@ -41,14 +133,5 @@ incident response, and this project taught me how baseline comparisons work.
 
 ## Project Links
 
-- GitHub Repository: _(add your repo URL here)_
+- GitHub Repository: `github.com/guchchi/FileGuard-File-Integrity-Monitor`
 - Python version: 3.x (standard library only, no external dependencies)
-
-## Screenshots
-
-| Screenshot | Description |
-|---|---|
-| `screenshots/baseline-creation.png` | Running `python main.py --baseline` |
-| `screenshots/integrity-check.png` | Running `python main.py --check` |
-| `screenshots/generated-report.png` | Text report in `reports/integrity_report.txt` |
-| `screenshots/json-report.png` | JSON report in `reports/integrity_report.json` |
