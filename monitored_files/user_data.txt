@@ -1,0 +1,13 @@
+# User Data Record
+# FileGuard — File Integrity Monitoring Tool
+# This is a harmless sample file for testing integrity monitoring.
+
+USER_ID = "demo_user"
+ROLE = "viewer"
+LAST_LOGIN = "2026-06-18 10:00:00"
+LOGIN_COUNT = 42
+ACCOUNT_STATUS = "active"
+PREFERRED_THEME = "dark"
+NOTIFICATIONS_ENABLED = true
+TWO_FACTOR_AUTH = false
+SESSION_TIMEOUT_MINUTES = 30

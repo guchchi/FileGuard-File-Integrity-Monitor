@@ -1,0 +1,14 @@
+# FileGuard - File Integrity Monitoring Tool
+#
+# This project uses only Python standard library modules.
+# No external dependencies are required.
+#
+# Modules used:
+#   - hashlib (SHA-256 hashing)
+#   - json (baseline and report storage)
+#   - argparse (command-line argument parsing)
+#   - os, sys, datetime (file operations, timestamps)
+#
+# To run:
+#   python main.py --baseline
+#   python main.py --check

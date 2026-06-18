@@ -1,0 +1,26 @@
+# FileGuard .gitignore
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Reports generated at runtime (optional - uncomment to exclude)
+# reports/integrity_report.txt
+# reports/integrity_report.json
