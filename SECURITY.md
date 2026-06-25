@@ -21,6 +21,19 @@ This tool is intended to help beginners learn about:
 - Baseline comparison for digital forensics
 - Defensive monitoring and incident-style reporting
 
+## Data Handling
+
+FileGuard processes only files within the specified `monitored_files/`
+directory. It does not:
+
+- Read, scan, or transmit files outside the monitored directory
+- Send data over any network
+- Store credentials, secrets, or personal information
+- Log system paths, usernames, or environment variables
+
+Generated reports contain only filenames, hash values, and scan metadata.
+No file contents are stored in baselines or reports.
+
 ## Responsible Use
 
 This project must **only** be used:

@@ -8,12 +8,49 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Code style](https://img.shields.io/badge/code%20style-strict-black)](https://github.com/psf/black)
 [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)](requirements.txt)
+[![Platform](https://img.shields.io/badge/platform-windows%20%7C%20linux%20%7C%20macos-lightgrey)]()
 
 </div>
 
-FileGuard is a defensive Python tool that monitors file integrity using SHA-256 cryptographic hashes. It detects modified, new, or deleted files by comparing current hashes against a trusted baseline, and generates actionable tamper-detection reports.
+FileGuard is a defensive Python tool that monitors file integrity using SHA-256 cryptographic hashes. It detects modified, new, or deleted files by comparing current hashes against a trusted baseline, and generates actionable tamper-detection reports. Zero external dependencies — Python standard library only.
 
-> This project was built for the **IIT Kanpur B.Cyber program** portfolio. It demonstrates defensive security thinking, file integrity monitoring, and incident-style reporting.
+---
+
+## Features
+
+- **SHA-256 cryptographic hashing** — industry-standard file fingerprinting
+- **Baseline creation** — establish a known-good state of monitored files
+- **Tamper detection** — detect modified, new, and deleted files
+- **Severity scoring** — Low, Medium, High classification based on change type
+- **Multi-format reports** — terminal output, text file, JSON
+- **Recommended actions** — context-aware defensive recommendations
+- **Zero dependencies** — pure Python standard library
+
+---
+
+## How It Works
+
+```
+monitored_files/ → SHA-256 Baseline → Re-scan → Compare Hashes → Detect Changes → Report
+```
+
+| Step | Command | What Happens |
+|------|---------|--------------|
+| 1 | `--baseline` | Scan `monitored_files/`, compute SHA-256 hashes, save to `baseline.json` |
+| 2 | `--check` | Re-scan folder, compare current hashes against baseline |
+| 3 | (automatic) | Classify files as unchanged, modified, new, or deleted |
+| 4 | (automatic) | Assign severity and generate terminal + file reports |
+
+---
+
+## Detection Capabilities
+
+| Detection | Description | Severity |
+|-----------|-------------|----------|
+| New file added | File exists on disk but not in baseline | Low |
+| File modified | Hash differs from baseline | Medium |
+| File deleted | File in baseline but missing from disk | High |
+| Multiple modifications | Two or more files changed | High |
 
 ---
 
@@ -26,33 +63,7 @@ python main.py --baseline    # Create hash baseline
 python main.py --check       # Verify file integrity
 ```
 
-Zero external dependencies — Python standard library only.
-
----
-
-## How It Works
-
-```
-monitored_files/ → SHA-256 Baseline → Re-scan → Compare Hashes → Detect Changes → Report
-```
-
-| Step | Command | What Happens |
-|---|---|---|
-| 1 | `--baseline` | Scan `monitored_files/`, compute SHA-256 hashes, save to `baseline.json` |
-| 2 | `--check` | Re-scan folder, compare current hashes against baseline |
-| 3 | (automatic) | Classify files as unchanged, modified, new, or deleted |
-| 4 | (automatic) | Assign severity and generate terminal + file reports |
-
----
-
-## Detection Capabilities
-
-| Detection | Description | Severity |
-|---|---|---|
-| New file added | File exists on disk but not in baseline | Low |
-| File modified | Hash differs from baseline | Medium |
-| File deleted | File in baseline but missing from disk | High |
-| Multiple modifications | Two or more files changed | High |
+No installation required — Python 3.8+ only.
 
 ---
 
@@ -106,19 +117,72 @@ FileGuard/
 ├── reports/               # Generated integrity reports
 ├── screenshots/           # README screenshots
 └── docs/
-    └── PORTFOLIO_SUMMARY.md
+    ├── PORTFOLIO_SUMMARY.md
+    ├── SECURITY_REVIEW.md
+    ├── INTEGRITY_LOGIC.md
+    ├── THREAT_MODEL.md
+    ├── EVIDENCE.md
+    └── FUTURE_IMPROVEMENTS.md
 ```
 
 ---
 
-## Cybersecurity Learning Summary
+## Cybersecurity Concepts Demonstrated
 
-File integrity monitoring is a core defensive practice. This project taught me:
+- **File integrity monitoring** — tracking file state over time
+- **SHA-256 cryptographic hashing** — secure file fingerprinting
+- **Baseline comparison** — establishing and comparing against a trusted state
+- **Tamper detection** — identifying unauthorized modifications
+- **Severity classification** — risk-based prioritization of findings
+- **Digital forensics basics** — verifying data integrity and trust
+- **Incident-style reporting** — documenting findings for response
+- **Defensive monitoring** — proactive detection of system changes
+
+---
+
+## Ethical Disclaimer
+
+FileGuard is a **defensive cybersecurity tool** designed for educational purposes and authorized security assessments only. It must only be used on systems you own or have explicit permission to monitor. The author is not responsible for any misuse of this tool.
+
+---
+
+## What I Learned
+
+Building FileGuard taught me:
 
 - How SHA-256 provides cryptographic file fingerprinting
 - Why baselines are essential for establishing trusted system state
 - How tamper detection connects to digital forensics and incident response
 - That structured reporting turns raw detection data into actionable intelligence
+- How severity scoring helps prioritize security findings
+
+---
+
+## Why File Integrity Monitoring Matters
+
+File integrity monitoring is a core defensive practice. If an important file is changed without authorization — whether by malware, insider activity, or accidental modification — defenders need a way to detect the change, compare it with a trusted baseline, and generate evidence for investigation. FileGuard demonstrates this workflow end-to-end.
+
+---
+
+## Future Improvements
+
+- Real-time file monitoring with watchdog integration
+- Email or webhook alert notifications
+- Encrypted baseline storage
+- GUI dashboard for monitoring multiple directories
+- SIEM integration with standardized output formats
+
+---
+
+## Tech Stack
+
+| Component | Technology |
+|-----------|-----------|
+| Language | Python 3.8+ |
+| Hashing | hashlib (SHA-256) |
+| Storage | JSON |
+| CLI | argparse |
+| External deps | None |
 
 ---
 
@@ -129,5 +193,5 @@ MIT — see [LICENSE](LICENSE).
 ---
 
 <div align="center">
-  <sub>Built for the IIT Kanpur B.Cyber program · Defensive cybersecurity portfolio project</sub>
+  <sub>Defensive cybersecurity portfolio project · File integrity monitoring · SHA-256 tamper detection</sub>
 </div>
