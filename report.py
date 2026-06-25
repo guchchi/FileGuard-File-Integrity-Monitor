@@ -1,9 +1,13 @@
 import json
 from datetime import datetime
+from typing import Any, Dict, List
+
+from monitor import ComparisonResult
+
+ReportData = Dict[str, Any]
 
 
-def generate_report_data(comparison_result):
-    """Build a structured report from the comparison result."""
+def generate_report_data(comparison_result: ComparisonResult) -> ReportData:
     total_scanned = len(comparison_result["current_hashes"])
     unchanged_count = len(comparison_result["unchanged"])
     modified_count = len(comparison_result["modified"])
@@ -34,13 +38,9 @@ def generate_report_data(comparison_result):
     }
 
 
-def _calculate_severity(modified_count, deleted_count, new_count):
-    """Assign severity based on change types.
-
-    Low:    only new files
-    Medium: modified files detected
-    High:   deleted files or multiple modified files
-    """
+def _calculate_severity(
+    modified_count: int, deleted_count: int, new_count: int
+) -> str:
     if deleted_count > 0 or modified_count > 1:
         return "High"
     if modified_count == 1:
@@ -50,8 +50,10 @@ def _calculate_severity(modified_count, deleted_count, new_count):
     return "None"
 
 
-def _get_recommendations(modified_count, deleted_count, new_count):
-    actions = []
+def _get_recommendations(
+    modified_count: int, deleted_count: int, new_count: int
+) -> List[str]:
+    actions: List[str] = []
 
     if modified_count > 0:
         actions.append("Review the modified files for unauthorized changes")
@@ -72,8 +74,7 @@ def _get_recommendations(modified_count, deleted_count, new_count):
     return actions
 
 
-def print_terminal_report(report_data):
-    """Display a clean integrity report in the terminal."""
+def print_terminal_report(report_data: ReportData) -> None:
     s = report_data["summary"]
 
     print("=" * 50)
@@ -115,8 +116,7 @@ def print_terminal_report(report_data):
     print("=" * 50)
 
 
-def save_text_report(report_data, filepath):
-    """Save a human-readable integrity report to a text file."""
+def save_text_report(report_data: ReportData, filepath: str) -> None:
     s = report_data["summary"]
 
     with open(filepath, "w", encoding="utf-8") as f:
@@ -167,8 +167,7 @@ def save_text_report(report_data, filepath):
     print(f"  [OK] Text report saved: {filepath}")
 
 
-def save_json_report(report_data, filepath):
-    """Save a structured JSON integrity report."""
+def save_json_report(report_data: ReportData, filepath: str) -> None:
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(report_data, f, indent=2)
     print(f"  [OK] JSON report saved: {filepath}")

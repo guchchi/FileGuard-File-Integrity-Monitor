@@ -11,6 +11,7 @@ Usage:
 import argparse
 import os
 import sys
+from typing import NoReturn
 
 from hasher import scan_folder
 from monitor import save_baseline, compare_baseline
@@ -27,7 +28,7 @@ TEXT_REPORT = os.path.join(REPORTS_DIR, "integrity_report.txt")
 JSON_REPORT = os.path.join(REPORTS_DIR, "integrity_report.json")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="FileGuard — File Integrity Monitoring Tool"
     )
@@ -58,8 +59,7 @@ def main():
         _run_integrity_check()
 
 
-def _create_baseline():
-    """Scan monitored files and save SHA-256 hashes as baseline."""
+def _create_baseline() -> None:
     print("FileGuard — creating baseline...")
     print()
 
@@ -82,8 +82,7 @@ def _create_baseline():
     print(f"  Run 'python main.py --check' to verify integrity.")
 
 
-def _run_integrity_check():
-    """Compare current files against baseline and generate reports."""
+def _run_integrity_check() -> None:
     print("FileGuard — checking integrity...")
     print()
 
@@ -105,11 +104,9 @@ def _run_integrity_check():
     print(f"  New: {new_count}   Deleted: {deleted_count}")
     print()
 
-    # Generate full report
     report_data = generate_report_data(comparison)
     print_terminal_report(report_data)
 
-    # Save reports
     os.makedirs(REPORTS_DIR, exist_ok=True)
     save_text_report(report_data, TEXT_REPORT)
     save_json_report(report_data, JSON_REPORT)

@@ -1,13 +1,9 @@
 import hashlib
 import os
+from typing import Dict, Optional
 
 
-def calculate_file_hash(file_path):
-    """Calculate SHA-256 hash of a file.
-
-    SHA-256 is used because it is cryptographically secure and
-    widely used in file integrity monitoring and digital forensics.
-    """
+def calculate_file_hash(file_path: str) -> Optional[str]:
     sha256 = hashlib.sha256()
     try:
         with open(file_path, "rb") as f:
@@ -22,18 +18,13 @@ def calculate_file_hash(file_path):
         return None
 
 
-def scan_folder(folder_path):
-    """Scan a folder and return a dictionary of relative paths to SHA-256 hashes.
-
-    Returns:
-        { "relative/path.txt": "abcdef123456..." }
-    """
-    file_hashes = {}
+def scan_folder(folder_path: str) -> Dict[str, str]:
+    file_hashes: Dict[str, str] = {}
     if not os.path.isdir(folder_path):
         print(f"  [ERROR] Folder not found: {folder_path}")
         return file_hashes
 
-    for root, dirs, files in os.walk(folder_path):
+    for root, _dirs, files in os.walk(folder_path):
         for filename in sorted(files):
             full_path = os.path.join(root, filename)
             relative_path = os.path.relpath(full_path, folder_path)

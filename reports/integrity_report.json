@@ -1,6 +1,6 @@
 {
   "report_title": "FileGuard Integrity Report",
-  "generated_at": "2026-06-18 19:26:46",
+  "generated_at": "2026-06-25 09:50:01",
   "summary": {
     "total_files_scanned": 3,
     "unchanged_files": 3,
@@ -12,8 +12,8 @@
   "details": {
     "unchanged": [
       "app_settings.txt",
-      "sample_config.txt",
-      "user_data.txt"
+      "user_data.txt",
+      "sample_config.txt"
     ],
     "modified": [],
     "new_files": [],

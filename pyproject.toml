@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "fileguard"
+version = "1.0.0"
+description = "File integrity monitoring tool using SHA-256 hashing"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+keywords = ["cybersecurity", "file-integrity", "sha256", "tamper-detection", "defensive-security"]
+
+[project.urls]
+Source = "https://github.com/guchchi/FileGuard-File-Integrity-Monitor"
